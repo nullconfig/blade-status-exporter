@@ -1,0 +1,46 @@
+FROM alpine:3.17 AS base
+
+COPY src/requirements.txt /app/requirements.txt
+
+RUN set -ex \
+    && apk -U upgrade \
+    && apk add \
+        build-base \
+        python3 \
+        python3-dev \
+        py3-pip \
+        openssl \
+        openssl-dev \
+        libffi-dev \
+        gcc \
+        musl-dev \
+        cargo \
+        curl \
+    && pip3 install --upgrade \
+        pip \
+    && pip3 install \
+        setuptools \
+    && pip3 install wheel \
+    && pip3 install -r /app/requirements.txt \
+    && apk del \
+        build-base \
+        gcc \
+        python3-dev \
+        openssl-dev \
+        libffi-dev \
+        musl-dev \
+        cargo
+
+# Insert our emulator extentions
+COPY src /app
+COPY mockups /app/api_emulator/redfish/static
+
+EXPOSE 5000
+ENV MOCKUPFOLDER="CMM"
+ENV AUTH_CONFIG="ADMIN:root_password:Administrator"
+ENV PORT=5000
+ENV XNAME="x3000c0s0b0"
+ENV MAC_SCHEMA=""
+WORKDIR /app
+ENTRYPOINT ["python3"]
+CMD ["emulator.py"]

@@ -1,0 +1,62 @@
+{
+    "HTTPS": "Disable",
+    "SPEC": "Redfish",
+    "POPULATE": {
+      "Chassis": [
+        {
+          "Name": "Compute Chassis",
+          "Id": "Chassis-{0}",
+          "Count": 5,
+          "Links": {
+            "ComputerSystems": [
+              {
+                "Name": "Compute System",
+                "Id": "System-{0}",
+                "Count": 1,
+                "Processors": [
+                  {
+                    "Id": "CPU{0}",
+                    "TotalCores": 12,
+                    "MaxSpeedMHz": 2400,
+                    "Count": 2
+                  }
+                ],
+                "Memory": [
+                  {
+                    "Id": "DRAM{0}",
+                    "CapacityMiB": 16384,
+                    "MemoryType": "DRAM",
+                    "Count": 4
+                  },
+                  {
+                    "Id": "NVRAM{0}",
+                    "CapacityMiB": 65536,
+                    "MemoryType": "NVDIMM_N",
+                    "Count": 4
+                  }
+                ],
+                "SimpleStorage": [
+                  {
+                    "Id": "SAS-CTRL{0}",
+                    "Count": 1,
+                    "Devices": {
+                      "CapacityBytes": 549755813888,
+                      "Count": 1
+                    }
+                  }
+                ],
+                "EthernetInterfaces": [
+                  {
+                    "Id": "NIC-{0}",
+                    "SpeedMbps": 10000,
+                    "Count": 2
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+    

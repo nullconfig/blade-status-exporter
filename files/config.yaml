@@ -1,0 +1,4 @@
+username: ADMIN
+password: root_password
+chassis:
+  - localhost
