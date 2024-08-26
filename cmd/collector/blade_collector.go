@@ -37,7 +37,6 @@ func NewChassisCollector(chassisList []interface{}, username string, password st
 func (c *chassisCollector) Describe(ch chan<- *prometheus.Desc) {
 	ds := []*prometheus.Desc{
 		c.BladeStatus,
-		c.BladeHealth,
 	}
 
 	for _, d := range ds{
