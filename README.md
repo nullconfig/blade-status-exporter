@@ -15,6 +15,6 @@ git clone https://github.com/Cray-HPE/csm-redfish-interface-emulator.git csm-red
 mv ./dockerfile ./csm-redfish/Dockerfile
 cd csm-redfish
 podman build -t redfish-emulator -f dockerfile .
-cd ../..
+cd ..
 podman-compose -f compose.yaml up
 ```
